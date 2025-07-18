@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
-import { useComments } from "../service/useApiFecth";
+
 import { getRandomId } from "../util/helpers";
+import { useInteractive } from "../../CommentContext/useInteractive";
 
 function Form({
-  user,
-  addComment,
   displayForm,
   displayName,
-  imagesReply,
-  handleComment,
-  addReply,
+  // imagesReply,
+
   comment,
+  defaultContent = "",
 }) {
-  const [content, setContent] = useState("");
+  const { user, addComment, addReply } = useInteractive();
+  const [content, setContent] = useState(defaultContent);
+
+  console.log(comment);
+  useEffect(() => {
+    setContent(defaultContent);
+  }, [defaultContent]);
+
   // const { isLoading } = useComments();
   // console.log(isLoading, "loading...");
 
   // console.log(handleComment, "content");
-
+  // console.log(displayName, "name");
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,7 +42,7 @@ function Form({
           png: user?.image?.png || "./images/avatars/image-juliusomo.png",
           webp: user?.image?.webp || "./images/avatars/image-juliusomo.webp",
         },
-        username: user?.username || "juliusomo",
+        username: "juliusomo",
       },
     };
 
@@ -47,9 +53,9 @@ function Form({
       score: 1,
       replyingTo: displayName,
       user: {
-        image: { png: imagesReply },
+        image: { png: user?.image?.png },
+        username: "juliusomo",
       },
-      username: user?.username,
     };
 
     if (!displayForm) addComment(newComment);

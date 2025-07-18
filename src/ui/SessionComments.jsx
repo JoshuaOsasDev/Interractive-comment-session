@@ -4,27 +4,14 @@ import Form from "./Form";
 import { useState } from "react";
 import { HiPencil, HiTrash } from "react-icons/hi2";
 import SessionReply from "./SessionReply";
+import FormEdit from "./FormEdit";
+import { useInteractive } from "../../CommentContext/useInteractive";
 
-function SessionComments({
-  comment,
-  user,
-  isPosting,
-  deleteComment,
-  dispatch,
-  addReply,
-}) {
-  // const handleDelete = async () => {
-  //   try {
-  //     await deleteComment(comment.id);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //     // Handle error in UI
-  //   }
-  // };
-
-  console.log(comment, "session");
+function SessionComments({ comment }) {
+  const { deleteComment, isLoading: isPosting, user } = useInteractive();
 
   const [displayForm, setDisplayForm] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -36,9 +23,9 @@ function SessionComments({
     setDisplayForm((prev) => (prev === id ? !prev : id));
   };
 
-  const handleComment = (parendId, reply) => {
-    dispatch({ type: "addReply", payload: { parendId, reply } });
-  };
+  // const handleComment = (parendId, reply) => {
+  //   dispatch({ type: "addReply", payload: { parendId, reply } });
+  // };
   return (
     <div className="flex flex-col space-y-3 transition duration-300">
       <div
@@ -91,7 +78,10 @@ function SessionComments({
               </span>{" "}
               <span>Delete</span>
             </button>
-            <button className="text-primary-purple-600 flex cursor-pointer items-center space-x-1">
+            <button
+              onClick={() => setIsEditing((prev) => !prev)}
+              className="text-primary-purple-600 flex cursor-pointer items-center space-x-1"
+            >
               <span>
                 <HiPencil />
               </span>{" "}
@@ -110,25 +100,29 @@ function SessionComments({
           </button>
         )}
       </div>
-
       {displayForm === comment.id && (
         <Form
-          user={user}
           displayForm={displayForm}
           displayName={comment?.user?.username}
-          handleComment={(replyData) =>
-            handleComment(comment.id, replyData.replies[0])
-          }
           imagesReply={comment?.user?.image.png}
-          addReply={addReply}
           comment={comment.id}
         />
       )}
-
+      {isEditing && (
+        <FormEdit comment={comment} defaultValue={comment?.content} />
+      )}
       {/* REPLY */}
       <div className="ml-8 grid gap-4 border-l-2 border-l-gray-200">
         {comment.replies.map((reply) => (
-          <SessionReply key={reply.id} reply={reply} />
+          <SessionReply
+            key={reply.id}
+            reply={reply}
+            toggleReply={toggleReply}
+            displayForm={displayForm}
+            comment={comment}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+          />
         ))}
       </div>
     </div>

@@ -19,21 +19,7 @@
         },
         "username": "amyrobson"
       },
-      "replies": [
-        {
-          "id": "1752606497321-3164.9076350645178",
-          "content": "nice",
-          "createdAt": 1752606497321,
-          "score": 1,
-          "replyingTo": "amyrobson",
-          "user": {
-            "image": {
-              "png": "./images/avatars/image-amyrobson.png"
-            }
-          },
-          "username": "juliusomo"
-        }
-      ]
+      "replies": []
     },
     {
       "id": "2",
@@ -64,7 +50,7 @@
         },
         {
           "id": 4,
-          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+          "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the  fundamentals are what stay constant. ",
           "createdAt": "2 days ago",
           "score": 2,
           "replyingTo": "ramsesmiron",
@@ -79,23 +65,9 @@
       ]
     },
     {
-      "id": "1752603871193-2533.0547163689166",
-      "content": "My guy hired someone to work on his poultry farm, simple work. Next thing, the guy dies on the job, he was the only here there. Police came to pick up the body, and now both them and the family are extorting him as if it's a murder case.\nSo now, na crime to employ person for this country?",
-      "createdAt": 1752603871193,
-      "score": 1,
-      "replies": [],
-      "user": {
-        "image": {
-          "png": "./images/avatars/image-juliusomo.png",
-          "webp": "./images/avatars/image-juliusomo.webp"
-        },
-        "username": "juliusomo"
-      }
-    },
-    {
-      "id": "1752605918941-9124.924027220852",
-      "content": "create",
-      "createdAt": 1752605918941,
+      "id": "1752643062237-7641.910915284629",
+      "content": "No, we wouldn’t. Our main problem the previous season when we finished 8th was a lack of goals. Getting rid of 2-3 senior attackers last January without replacing them definitely won’t improve things, irrespective of who the manager is or what formation he plays.",
+      "createdAt": 1752643062237,
       "score": 1,
       "replies": [],
       "user": {
